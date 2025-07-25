@@ -1,0 +1,181 @@
+/* --- Theme Variables --- */
+:root {
+  --primary: #1976D2;
+  --secondary: #424242;
+  --accent: #FFC107;
+  --ttt-bg: #fff;
+  --ttt-board-bg: #fff;
+  --ttt-cell-border: #e0e0e0;
+  --ttt-x: var(--primary);
+  --ttt-o: var(--accent);
+  --ttt-win-bg: #e3f2fd;
+  --ttt-font: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+/* --- Minimal full screen centering --- */
+.ttt-outer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--ttt-bg);
+  font-family: var(--ttt-font);
+}
+
+/* Game container card */
+.ttt-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(25, 118, 210, 0.09),
+    0 1.5px 0.5px 0 rgba(25,118,210,0.062);
+  padding: 2.4rem 2rem 1.6rem 2rem;
+  margin: 0.8rem;
+}
+
+/* Title minimalistic */
+.ttt-title {
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  color: var(--primary);
+  text-align: center;
+}
+
+/* Current turn & status */
+.ttt-status {
+  min-height: 2.2em;
+  font-size: 1.22rem;
+  margin-bottom: 0.45rem;
+  text-align: center;
+}
+
+.ttt-turn, .ttt-announcement {
+  color: var(--secondary);
+  font-weight: 600;
+  font-size: 1.19rem;
+}
+.ttt-player {
+  color: var(--primary);
+  font-weight: 800;
+  padding-left: 0.2em;
+}
+.ttt-winner {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.ttt-announcement[data-status="draw"] {
+  color: var(--secondary);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.ttt-announcement[data-status="winner"] {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+/* --- Board and squares --- */
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: var(--ttt-board-bg);
+  border-radius: 13px;
+  margin: 1em 0 1em 0;
+  box-shadow: 0 0.5px 1.5px 0 rgba(25, 118, 210, 0.07);
+}
+
+.ttt-row {
+  display: flex;
+}
+
+.ttt-square {
+  font: inherit;
+  width: 68px;
+  height: 68px;
+  background: #fff;
+  border: 2px solid var(--ttt-cell-border);
+  border-radius: 0;
+  font-size: 2.2em;
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--ttt-x);
+  outline: none;
+  cursor: pointer;
+  transition: background 0.18s, color 0.22s;
+  box-shadow: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.ttt-square:active {
+  filter: brightness(0.92);
+}
+
+.ttt-square:nth-child(3n) { border-right: none; }
+.ttt-row:last-child .ttt-square { border-bottom: none; }
+
+.ttt-square[aria-label*="O"] {
+  color: var(--ttt-o);
+}
+
+/* --- Reset Button --- */
+.ttt-reset-btn {
+  margin-top: 0.8rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  padding: 0.65em 2em;
+  font-size: 1.08rem;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  box-shadow: 0 1px 4px rgba(25, 118, 210, 0.10);
+  transition: background 0.18s, box-shadow 0.18s;
+}
+.ttt-reset-btn:hover, .ttt-reset-btn:focus {
+  background: var(--accent);
+  color: var(--secondary);
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.11);
+  outline: none;
+}
+
+/* --- Footer --- */
+.ttt-footer {
+  margin-top: 2.5em;
+  font-size: 1rem;
+  color: #adb5bd;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .ttt-board { box-shadow: none; }
+  .ttt-square {
+    width: 18vw;
+    height: 18vw;
+    min-width: 52px;
+    min-height: 52px;
+    font-size: 1.5em;
+  }
+  .ttt-container {
+    padding: 1.1rem 0.5rem 1rem 0.5rem;
+  }
+  .ttt-title { font-size: 1.4rem; }
+  .ttt-footer { font-size: 0.97rem; }
+}
+
+body {
+  background: var(--ttt-bg);
+  margin: 0;
+}
